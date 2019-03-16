@@ -5,7 +5,7 @@
 void Game::start()
 {
     int played;
-    int move_to_steps;
+    int steps_to_move;
 
     cout << "How many players? " << endl;
     cin >> num_of_players;
@@ -24,7 +24,7 @@ void Game::start()
     }
 
     //Get a name for each player
-    for(size_t i = 0; i < num_of_players; i++)
+    for(int i = 0; i < num_of_players; i++)
     {
         string name;
         cout << "player name " + to_string((long long)(i+1)) + " name?" << endl;
@@ -34,12 +34,12 @@ void Game::start()
     }
     
     //Generate first card
-    current = generate_card();
+    current = Card::generate_card();
 
     while(true)
     {
         //By default move to the next turn after a turn
-        move_to_steps = 1;
+        steps_to_move = 1;
 
         // Start current player's turn
 		players.at(turn).play(current);
@@ -47,24 +47,24 @@ void Game::start()
         //If current player won - end the game !
         if(players.at(turn).is_winner())
         {
-            cout << players.at(turn).get_name() + " wins!" << endl;
+            cout << players.at(turn).getName() + " wins!" << endl;
 			return;
         }
 
         // If current player used a CD card, Flip the direction of the game then move to the next turn
-		if (players.at(turn).get_curr_sign() == CD)
+		if (players.at(turn).getCurr_sign() == sign::CD)
         {
 			direction = -direction;
 		}
 
         // If current player used a STOP card, Move two turns forward
-		else if (players.at(turn).get_curr_sign() == STOP)
+		else if (players.at(turn).getCurr_sign() == sign::STOP) 
         {
 			steps_to_move = 2;
 		}
 
         // If player used a PLUS card, The turn will not be changed and he will get another turn
-		else if (players.at(turn).get_curr_sign() == PLUS)
+		else if (players.at(turn).getCurr_sign() == sign::PLUS)
         {
 			steps_to_move = 0;
 		}
