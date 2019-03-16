@@ -7,20 +7,20 @@ Player::Player(const Player& p)
     name = p.name;
     num_of_cards = p.num_of_cards;
     curr_sign = p.curr_sign;
-    for(size_t i = 0; i < p.cards.size(); i++)
+    for(int i = 0; i < p.cards.size(); i++)
     {
         cards.push_back(p.cards.at(i));
     }
 }
 
 
-Player Player::operator= (Const Player& p)
+Player Player::operator= (const Player& p)
 {
     name = p.name;
     num_of_cards = p.num_of_cards;
     curr_sign = p.curr_sign;
     cards.clear();
-    for(size_t i = 0; i < p.cards.size(); i++)
+    for(int i = 0; i < p.cards.size(); i++)
     {
         cards.push_back(p.cards.at(i));
     }
@@ -30,9 +30,9 @@ Player Player::operator= (Const Player& p)
 
 void Player::add_cards(const int& num_of_cards)
 {
-    for(size_t i = 0; i < num_of_cards; i++)
+    for(int i = 0; i < num_of_cards; i++)
     {
-        this->cards.push_back(generate_card());
+        this->cards.push_back(Card::generate_card());
     }
     
 }
@@ -45,11 +45,11 @@ bool Player::play(Card& c)
     cout << "current: " << c << endl;
     cout<< this->getName() + ", your turn -"<< endl;
     cout << "Your cards :";
-    for(size_t i = 0; i < num_of_cards; i++)
+    for(int i = 0; i < num_of_cards; i++)
     {
-        cout << "(" + to_string((long long)(i+1)) + ")" << this.cards.at(i) << " ";
+        cout << "(" + to_string((long long)(i+1)) + ")" << this->cards.at(i) << " ";
     }
-    count << endl;
+    cout << endl;
 
     while(true){
         //Select the card of the player
@@ -71,7 +71,7 @@ bool Player::play(Card& c)
                 //Change the sign on the current sign
                 curr_sign = c.get_sign();
                 //Delete the chosen card from the player's deck of cards
-                this->cards.erase(cards.begin() + choise - 1);
+                this->cards.erase(cards.begin() + choice - 1);
                 this->num_of_cards--;
 
                 return 1;
