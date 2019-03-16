@@ -4,6 +4,10 @@
 #define GAME_H
 #include "Player.h"
 #include "Card.h"
+#include<string>
+#include<iostream>
+#include <vector>
+using namespace std;
 class Game {
 private:
 	//private members and functions
@@ -29,7 +33,3 @@ public:
 	void normalize_turn(); 
 };
 #endif
-
-
-
-
