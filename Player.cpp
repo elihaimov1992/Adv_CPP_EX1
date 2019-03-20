@@ -44,7 +44,7 @@ bool Player::play(Card& c)
 
     cout << "current: " << c << endl;
     cout<< this->getName() + ", your turn -"<< endl;
-    cout << "Your cards :";
+    cout << "Your cards: ";
     for(int i = 0; i < num_of_cards; i++)
     {
         cout << "(" + to_string((long long)(i+1)) + ")" << this->cards.at(i) << " ";
@@ -62,7 +62,7 @@ bool Player::play(Card& c)
             //If the Chosen card is illegal (in terms of color and sign)
             if(!(c.is_legal(chosen_card)))
             {
-               cout << "You can't put " << chosen_card << "on" << c << endl;
+               cout << "You can't put " << chosen_card << " on " << c << endl;
             }
             else
             {
