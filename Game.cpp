@@ -7,7 +7,7 @@ void Game::start()
     int played;
     int steps_to_move;
 
-    cout << "How many players? " << endl;
+    cout << "How many players?" << endl;
     cin >> num_of_players;
     if(num_of_players <= 0)
     {
@@ -15,7 +15,7 @@ void Game::start()
         return;
     }
 
-    cout << "How many cards? " << endl;
+    cout << "How many cards?" << endl;
     cin >> init_num_of_cards;
     if(init_num_of_cards <= 0)
     {
@@ -27,7 +27,7 @@ void Game::start()
     for(int i = 0; i < num_of_players; i++)
     {
         string name;
-        cout << "player name " + to_string((long long)(i+1)) + " name?" << endl;
+        cout << "player number " + to_string((long long)(i+1)) + " name?" << endl;
         cin >> name;
         players.emplace_back(name, init_num_of_cards);
         players.at(i).add_cards(init_num_of_cards);
